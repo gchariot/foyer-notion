@@ -60,7 +60,7 @@ COVERS={
  "stock":(("STOCK & COURSES","bleu",84),[("RÉSERVE","noir"),("QUOTIDIEN","gris"),("À RACHETER","jaune")]),
  "repas":(("REPAS","vert",120),[("MENU DE LA SEMAINE","noir"),("CUISINÉ","vert"),("100 % DISPO","jaune")]),
  "semaine":(("POINT DU DIMANCHE","noir",84),[("10 MIN","jaune"),("À DEUX","rouge")]),
- "demarrer":(("DÉMARRER","noir",100),[("1. DUPLIQUER","gris"),("2. INVITER","bleu"),("3. RÉPARTIR","rouge")]),
+ "demarrer":(("DÉMARRER","noir",120),[("15 MIN","jaune"),("PREMIÈRE FOIS","bleu")]),
  "coulisses":(("COULISSES","gris",110),[("NE PAS TOUCHER","noir")]),
 }
 ROTS=[1.2,-1.4,1.8,-0.8]
@@ -76,15 +76,34 @@ def cover_layout(t,c,fs,smalls,x0):
         g,sw=tape(x,CH/2-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[i%4],seed=i+3)
         body+=g; x+=sw+30
     return body,x-30-x0
+# Sur mobile, Notion ne garde que le centre (~35 % de la largeur) : le titre est
+# centré et tient dans MOBILE ; les petites étiquettes se répartissent de chaque côté.
+MOBILE=CW*0.36
+def small_row(items,x0,seed0):
+    body,x='',x0; sh=38*1.45
+    for i,(st,sc) in enumerate(items):
+        g,sw=tape(x,CH/2-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[(i+seed0)%4],seed=i+seed0)
+        body+=g; x+=sw+30
+    return body,x-30-x0
 for k,(big,smalls) in COVERS.items():
     t,c,fs=big
-    _,total=cover_layout(t,c,fs,smalls,0)
-    # d'abord retirer une étiquette secondaire, ne réduire le titre qu'en dernier recours
-    while total>SAFE and len(smalls)>1: smalls=smalls[:-1]; _,total=cover_layout(t,c,fs,smalls,0)
-    while total>SAFE: fs-=4; _,total=cover_layout(t,c,fs,smalls,0)
-    body,total=cover_layout(t,c,fs,smalls,(CW-total)/2)
-    print(k,fs,round(total))
-    render(f'covers/{k}',svg(CW,CH,body),CW,CH)
+    _,w=tape(0,0,t,TAPE[c],fs,-1.2,seed=len(t))
+    while w>MOBILE: fs-=4; _,w=tape(0,0,t,TAPE[c],fs,-1.2,seed=len(t))
+    bx=(CW-w)/2; bh=fs*1.45
+    body,_=tape(bx,CH/2-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(t))
+    def split(items):
+        L,R=[],[]
+        for it in items:  # équilibre : chaque étiquette va du côté le plus court
+            (L if small_row(L,0,7)[1]<small_row(R,0,3)[1] else R).append(it)
+        return L,R
+    room=bx-50-CW*0.08
+    left,right=split(smalls)
+    while max(small_row(left,0,7)[1],small_row(right,0,3)[1])>room:
+        smalls=smalls[:-1]; left,right=split(smalls)
+    _,lw=small_row(left,0,7)
+    lb,_=small_row(left,bx-50-lw,7); rb,rw=small_row(right,bx+w+50,3)
+    print(k,fs,round(w))
+    render(f'covers/{k}',svg(CW,CH,body+lb+rb),CW,CH)
 
 # ---------- icônes 280x280 : pastille de ruban + monogramme ----------
 ICONS={"foyer":("F","noir"),"taches":("T","rouge"),"stock":("S","bleu"),"repas":("R","vert"),"semaine":("7","jaune"),"demarrer":("1","gris"),"coulisses":("C","gris")}
