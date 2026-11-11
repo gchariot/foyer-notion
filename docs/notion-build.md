@@ -57,3 +57,16 @@ Tout se trouve dans l'espace de Huxxley, sous « Foyer — QG du projet » → �
 - La DSL des vues ignore les filtres sur formules et sur rollups. À faire à la main : « À racheter » coché, « État » différent de « Plus tard ».
 - Les propriétés Bouton, les automatisations et les modèles récurrents ne se créent que dans l'interface.
 - Les valeurs des formules ne sont pas lisibles en clair. On peut en revanche filtrer dessus en mode `rows` pour vérifier.
+
+## Filtres posés dans l'interface (le DSL des vues ignore les filtres sur formules)
+
+| Vue | Filtre |
+| --- | --- |
+| Accueil › Mes tâches | Responsable = moi · État ne contient pas « PLUS TARD » |
+| Tâches du foyer › À faire | État ne contient pas « PLUS TARD » |
+| Accueil › Liste de courses | À racheter = cochée |
+| Stock & courses › Liste de courses | À racheter = cochée |
+
+À refaire à la main si une de ces vues est recréée par l'API.
+
+Couvertures : composition centrée dans les 70 % centraux (Notion rogne des deux côtés selon la largeur), URL en `?v=4`.
