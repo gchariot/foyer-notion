@@ -53,30 +53,28 @@ def render(name,content,w,h):
     p=f'/tmp/{os.path.basename(name)}.svg'; open(p,'w').write(content)
     subprocess.run(['rsvg-convert','-w',str(w),'-h',str(h),p,'-o',os.path.join(OUT,name+'.png')],check=True)
 
-# ---------- couvertures 1500x600 (mise en page calculée) ----------
+# ---------- couvertures 2400x400 : Notion n'affiche qu'une bande, tout tient dans le centre ----------
 COVERS={
- "foyer":(("FOYER","noir",150),[("TÂCHES","rouge"),("STOCK","bleu"),("REPAS","vert")],("À RACHETER","jaune")),
- "taches":(("TÂCHES DU FOYER","rouge",112),[("QUI FAIT QUOI","noir"),("EN RETARD","rouge"),("AUJOURD'HUI","jaune")],None),
- "stock":(("STOCK & COURSES","bleu",112),[("RÉSERVE","noir"),("QUOTIDIEN","gris"),("À RACHETER","jaune")],None),
- "repas":(("REPAS","vert",150),[("MENU DE LA SEMAINE","noir"),("CUISINÉ","vert")],("100 % DISPO","jaune")),
- "semaine":(("POINT DU DIMANCHE","noir",96),[("10 MIN","jaune"),("À DEUX","rouge")],None),
- "demarrer":(("DÉMARRER","noir",140),[("1. DUPLIQUER","gris"),("2. INVITER","bleu"),("3. RÉPARTIR","rouge")],None),
- "coulisses":(("COULISSES","gris",120),[("NE PAS TOUCHER","noir")],None),
+ "foyer":(("FOYER","noir",120),[("TÂCHES","rouge"),("STOCK","bleu"),("REPAS","vert"),("À RACHETER","jaune")]),
+ "taches":(("TÂCHES DU FOYER","rouge",84),[("QUI FAIT QUOI","noir"),("EN RETARD","rouge"),("AUJOURD'HUI","jaune")]),
+ "stock":(("STOCK & COURSES","bleu",84),[("RÉSERVE","noir"),("QUOTIDIEN","gris"),("À RACHETER","jaune")]),
+ "repas":(("REPAS","vert",120),[("MENU DE LA SEMAINE","noir"),("CUISINÉ","vert"),("100 % DISPO","jaune")]),
+ "semaine":(("POINT DU DIMANCHE","noir",84),[("10 MIN","jaune"),("À DEUX","rouge")]),
+ "demarrer":(("DÉMARRER","noir",120),[("1. DUPLIQUER","gris"),("2. INVITER","bleu"),("3. RÉPARTIR","rouge")]),
+ "coulisses":(("COULISSES","gris",110),[("NE PAS TOUCHER","noir")]),
 }
 ROTS=[1.2,-1.4,1.8,-0.8]
-for k,(big,smalls,accent) in COVERS.items():
+CW,CH=2400,400
+for k,(big,smalls) in COVERS.items():
     t,c,fs=big
-    g,w=tape(140,150,t,TAPE[c],fs,-1.2,seed=len(k)); body=g
-    x=150; y=150+fs*1.45+46
+    bh=fs*1.45
+    g,w=tape(150,CH/2-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(k)); body=g
+    x=150+w+60; sh=38*1.45
     for i,(st,sc) in enumerate(smalls):
-        g,sw=tape(x,y,st,TAPE[sc],44,ROTS[i%4],seed=i+3)
-        body+=g; x+=sw+28
-    if accent:
-        at,ac=accent
-        _,aw=tape(0,0,at,TAPE[ac],46,0,seed=1)
-        g,_=tape(1500-aw-120,120,at,TAPE[ac],46,2.5,seed=2); body+=g
-    assert max(x,140+w)<1460, (k,x,w)
-    render(f'covers/{k}',svg(1500,600,body),1500,600)
+        g,sw=tape(x,CH/2-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[i%4],seed=i+3)
+        body+=g; x+=sw+30
+    assert x<CW-60,(k,x)
+    render(f'covers/{k}',svg(CW,CH,body),CW,CH)
 
 # ---------- icônes 280x280 : pastille de ruban + monogramme ----------
 ICONS={"foyer":("F","noir"),"taches":("T","rouge"),"stock":("S","bleu"),"repas":("R","vert"),"semaine":("7","jaune"),"demarrer":("1","gris"),"coulisses":("C","gris")}
