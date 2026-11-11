@@ -73,7 +73,7 @@ def cover_layout(t,c,fs,smalls,x0):
     g,w=tape(x0,CH/2-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(t)); body=g
     x=x0+w+60
     for i,(st,sc) in enumerate(smalls):
-        g,sw=tape(x,CH/2-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[i%4],seed=i+3)
+        g,sw=tape(x,CH/2-28-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[i%4],seed=i+3)
         body+=g; x+=sw+30
     return body,x-30-x0
 # Sur mobile, Notion ne garde que le centre (~35 % de la largeur) : le titre est
@@ -82,7 +82,7 @@ MOBILE=CW*0.36
 def small_row(items,x0,seed0):
     body,x='',x0; sh=38*1.45
     for i,(st,sc) in enumerate(items):
-        g,sw=tape(x,CH/2-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[(i+seed0)%4],seed=i+seed0)
+        g,sw=tape(x,CH/2-28-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[(i+seed0)%4],seed=i+seed0)
         body+=g; x+=sw+30
     return body,x-30-x0
 for k,(big,smalls) in COVERS.items():
@@ -90,7 +90,7 @@ for k,(big,smalls) in COVERS.items():
     _,w=tape(0,0,t,TAPE[c],fs,-1.2,seed=len(t))
     while w>MOBILE: fs-=4; _,w=tape(0,0,t,TAPE[c],fs,-1.2,seed=len(t))
     bx=(CW-w)/2; bh=fs*1.45
-    body,_=tape(bx,CH/2-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(t))
+    body,_=tape(bx,CH/2-28-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(t))
     def split(items):
         L,R=[],[]
         for it in items:  # équilibre : chaque étiquette va du côté le plus court
