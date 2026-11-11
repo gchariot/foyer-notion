@@ -110,4 +110,12 @@ for k,(t,c) in REC.items():
     g,w=tape(0,0,t,TAPE[c],fs=fs,rot=-2,seed=9)
     body=f'<g transform="translate({(800-w)/2:.0f} {(500-fs*1.45)/2:.0f})">{g}</g>'
     render(f'recettes/{k}',svg(800,500,body),800,500)
+# ---------- types de recette 800x500 : une couleur par type (alignée sur les options Notion) ----------
+TYPES={"plat":("PLAT","rouge",-2),"batch":("BATCH COOKING","vert",1.5),"dessert":("DESSERT","jaune",-1),
+       "petit-dej":("PETIT-DÉJ","gris",2),"soupe":("SOUPE","bleu",-1.5)}
+for k,(t,c,rot) in TYPES.items():
+    fs=96 if len(t)<9 else 78
+    g,w=tape(0,0,t,TAPE[c],fs=fs,rot=rot,seed=len(t))
+    body=f'<g transform="translate({(800-w)/2:.0f} {(500-fs*1.45)/2:.0f})">{g}</g>'
+    render(f'types/{k}',svg(800,500,body),800,500)
 print("ok")
