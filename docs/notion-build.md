@@ -70,3 +70,14 @@ Tout se trouve dans l'espace de Huxxley, sous « Foyer — QG du projet » → �
 À refaire à la main si une de ces vues est recréée par l'API.
 
 Couvertures : composition centrée dans les 70 % centraux (Notion rogne des deux côtés selon la largeur), URL en `?v=4`.
+
+## Passe UX (11 nov. 2026)
+
+- **Tâches › À faire** : tableau Kanban groupé par la formule État. Colonnes En retard / Aujourd'hui / Cette semaine ; « PLUS TARD » masqué et ordre des colonnes réglés dans l'interface. L'ancien tableau devient l'onglet **Tout** (sans filtre).
+- **Bouton « Fait »** (propriété bouton, créée dans l'interface) : Dernière fois = date de déclenchement. Visible dans À faire, Tout, Mes tâches (page Tâches et accueil).
+- **Recettes** : couverture de page = étiquette `assets/v2/recettes/*.png` ; aperçu de carte = image de couverture (réglé dans l'interface). Nouvelles formules `Placard` (PRÊT À CUISINER / MANQUE n INGRÉDIENT(S)) et `Durée` (« 45 min »).
+- **Repas › Cette semaine** : filtre Date ≥ aujourd'hui OU non cuisiné ; Recette élargie, Cuisiné juste après.
+- **Produits** : formule `Reste` (« reste 100 g · seuil 300 g ») affichée dans les listes de courses.
+- **Données d'exemple** : dates « Dernière fois » réparties pour 2 tâches en retard et 3 aujourd'hui au 11 nov. 2026.
+
+À surveiller : les dates d'exemple sont figées. Un acheteur qui duplique le modèle plus tard verra tout en retard. À traiter avant la mise en vente (ex. étape « Remettre à zéro » dans Démarrer).
