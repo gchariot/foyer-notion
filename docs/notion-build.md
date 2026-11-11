@@ -91,3 +91,31 @@ Couvertures : composition centrée dans les 70 % centraux (Notion rogne des deux
 - **Couvertures v6** : titre centré dans les 36 % du milieu (zone visible sur téléphone), étiquettes réparties de chaque côté, remontées pour ne pas toucher l'icône.
 - **Accueil** : les 4 liens passent en 2 × 2.
 - Vérifié en mode clair et en largeur 420 px.
+
+## Passe 3 (11 nov. 2026) — tests, photos, « Prêt ce soir »
+
+**Tests fonctionnels** (vérifiés dans l'interface, données remises en état) :
+- Récurrence : les 7 fréquences (jour 1 j, semaine 7, 2 semaines 14, mois 30, trimestre 91, semestre 182, an 365) et le seuil « cette semaine » ≤ 7 jours.
+- « Dernière fois » vide → Prochaine fois = aujourd'hui → AUJOURD'HUI.
+- Repas coché « Cuisiné » → stock décrémenté (Fromage 300 → 250 g, Ail 6 → 5), retour à l'état initial en décochant.
+- Bouton « Fait » → la carte quitte le tableau (testé puis annulé).
+- Formule `Reste` : pluriel « pièces » corrigé.
+
+**Photos de recettes** : couvertures en lien externe vers images.unsplash.com (licence Unsplash, gratuites, pas Unsplash+). Choix validé par Huxxley (option « photos en lien externe ») ; risque connu : zone grise de licence pour un modèle vendu, et une photo peut disparaître. Les couvertures « type » (`assets/v2/types/`) restent disponibles en repli.
+
+| Recette | Photo |
+| --- | --- |
+| Pâtes sauce tomate | photo-1751022910692-d0a1c3198d52 |
+| Couscous | photo-1644131448316-887558f9882b |
+| Dahl | photo-1788603092417-a01e665e0ab2 |
+| Gratin dauphinois | photo-1645453014403-4ad5170a386c |
+| Crumble | photo-1772547103123-823bfb230fb0 |
+| Curry de légumes | photo-1788604619692-120407b7207c |
+| Omelette épinards | photo-1677844592730-ce9c936d8f1a |
+| Porridge banane | photo-1715098841757-0e9690ec12d6 |
+| Soupe de carottes | photo-1620791144170-8a443bf37a33 |
+| Poulet curry riz | photo-1708782344490-9026aaa5eec7 |
+
+**Accueil** : bloc « Prêt ce soir » (galerie, aperçu = couverture, filtre interface Placard contient « PRÊT »), placé avant « Première fois ? ».
+**Repas** : « Cette semaine » en galerie (noms complets, plus de troncature), « Tableau » en second onglet (recréé).
+**Démarrer** : étape « Remettre à zéro les dates d'exemple » (sélection de toutes les tâches → Dernière fois = aujourd'hui).
