@@ -1,6 +1,6 @@
 ---
 workflowType: 'prd'
-status: 'provisoire — V1'
+status: 'validé — V1'
 date: '2026-11-11'
 inputDocuments: [product-brief.md, research/market-foyer-notion-research-2026-11-11.md]
 ---

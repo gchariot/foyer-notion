@@ -1,6 +1,6 @@
 ---
 workflowType: 'product-brief'
-status: 'provisoire — hypothèses ★ à valider par Déborah'
+status: 'validé par Huxxley le 2026-11-11 (Déborah ajustera)'
 date: '2026-11-11'
 inputDocuments: [docs/concept-note.md, docs/reponses-proposees.md, _bmad-output/planning-artifacts/research/market-foyer-notion-research-2026-11-11.md]
 ---

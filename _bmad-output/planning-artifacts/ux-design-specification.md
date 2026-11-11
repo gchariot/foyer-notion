@@ -1,6 +1,6 @@
 ---
 workflowType: 'ux-design'
-status: 'provisoire — ambiance à choisir'
+status: 'ambiance A « Maison douce » retenue et appliquée'
 date: '2026-11-11'
 inputDocuments: [prd.md, product-brief.md]
 ---
