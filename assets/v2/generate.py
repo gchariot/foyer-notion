@@ -116,7 +116,7 @@ for k,(ch,c) in ICONS.items():
 # ---------- titres de section : bande transparente 1600x170, ruban à gauche ----------
 TITRES={"aujourdhui":("AUJOURD'HUI","noir"),"mes-taches":("MES TÂCHES","rouge"),"au-menu":("AU MENU","vert"),"a-racheter":("À RACHETER","jaune"),
         "a-faire":("À FAIRE","rouge"),"liste-courses":("LISTE DE COURSES","jaune"),"le-stock":("LE STOCK","bleu"),"cette-semaine":("CETTE SEMAINE","vert"),
-        "livre-recettes":("LIVRE DE RECETTES","noir"),"etapes":("EN 5 ÉTAPES","noir"),"bon-a-savoir":("BON À SAVOIR","gris")}
+        "livre-recettes":("LIVRE DE RECETTES","noir"),"etapes":("EN 5 ÉTAPES","noir"),"bon-a-savoir":("BON À SAVOIR","gris"),"pret-ce-soir":("PRÊT CE SOIR","vert")}
 for k,(t,c) in TITRES.items():
     g,w=tape(12,24,t,TAPE[c],fs=78,seed=5)
     render(f'titres/{k}',svg(1600,170,g,bg=False),1600,170)
