@@ -81,3 +81,13 @@ Couvertures : composition centrée dans les 70 % centraux (Notion rogne des deux
 - **Données d'exemple** : dates « Dernière fois » réparties pour 2 tâches en retard et 3 aujourd'hui au 11 nov. 2026.
 
 À surveiller : les dates d'exemple sont figées. Un acheteur qui duplique le modèle plus tard verra tout en retard. À traiter avant la mise en vente (ex. étape « Remettre à zéro » dans Démarrer).
+
+## Passe UX 2 (11 nov. 2026)
+
+- **Kanban À faire** : couleur conditionnelle (interface) — cartes rouges si État contient « EN RETARD », jaunes si « AUJOURD'HUI ».
+- **Repas** : nouvelle vue liste « Cette semaine » en premier onglet ; l'ancien tableau devient « Tableau ». Accueil « Au menu » : Repas, Recette, Cuisiné.
+- **Recettes** : couverture = type (`assets/v2/types/*.png`, couleur alignée sur l'option Notion) ; la carte montre Recette, Placard, Durée. Tri alphabétique pour mélanger les couleurs.
+- **Encadrés** raccourcis à une phrase (Tâches, Repas, Stock, Préparer ma semaine).
+- **Couvertures v6** : titre centré dans les 36 % du milieu (zone visible sur téléphone), étiquettes réparties de chaque côté, remontées pour ne pas toucher l'icône.
+- **Accueil** : les 4 liens passent en 2 × 2.
+- Vérifié en mode clair et en largeur 420 px.
