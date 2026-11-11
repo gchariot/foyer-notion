@@ -60,20 +60,30 @@ COVERS={
  "stock":(("STOCK & COURSES","bleu",84),[("RÉSERVE","noir"),("QUOTIDIEN","gris"),("À RACHETER","jaune")]),
  "repas":(("REPAS","vert",120),[("MENU DE LA SEMAINE","noir"),("CUISINÉ","vert"),("100 % DISPO","jaune")]),
  "semaine":(("POINT DU DIMANCHE","noir",84),[("10 MIN","jaune"),("À DEUX","rouge")]),
- "demarrer":(("DÉMARRER","noir",120),[("1. DUPLIQUER","gris"),("2. INVITER","bleu"),("3. RÉPARTIR","rouge")]),
+ "demarrer":(("DÉMARRER","noir",100),[("1. DUPLIQUER","gris"),("2. INVITER","bleu"),("3. RÉPARTIR","rouge")]),
  "coulisses":(("COULISSES","gris",110),[("NE PAS TOUCHER","noir")]),
 }
 ROTS=[1.2,-1.4,1.8,-0.8]
 CW,CH=2400,400
-for k,(big,smalls) in COVERS.items():
-    t,c,fs=big
-    bh=fs*1.45
-    g,w=tape(150,CH/2-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(k)); body=g
-    x=150+w+60; sh=38*1.45
+# Notion recadre la couverture des deux côtés selon la largeur de fenêtre :
+# la composition est centrée et tient dans la zone sûre (70 % central).
+SAFE=CW*0.70
+def cover_layout(t,c,fs,smalls,x0):
+    bh=fs*1.45; sh=38*1.45
+    g,w=tape(x0,CH/2-bh/2-6,t,TAPE[c],fs,-1.2,seed=len(t)); body=g
+    x=x0+w+60
     for i,(st,sc) in enumerate(smalls):
         g,sw=tape(x,CH/2-sh/2+(14 if i%2 else -10),st,TAPE[sc],38,ROTS[i%4],seed=i+3)
         body+=g; x+=sw+30
-    assert x<CW-60,(k,x)
+    return body,x-30-x0
+for k,(big,smalls) in COVERS.items():
+    t,c,fs=big
+    _,total=cover_layout(t,c,fs,smalls,0)
+    # d'abord retirer une étiquette secondaire, ne réduire le titre qu'en dernier recours
+    while total>SAFE and len(smalls)>1: smalls=smalls[:-1]; _,total=cover_layout(t,c,fs,smalls,0)
+    while total>SAFE: fs-=4; _,total=cover_layout(t,c,fs,smalls,0)
+    body,total=cover_layout(t,c,fs,smalls,(CW-total)/2)
+    print(k,fs,round(total))
     render(f'covers/{k}',svg(CW,CH,body),CW,CH)
 
 # ---------- icônes 280x280 : pastille de ruban + monogramme ----------
