@@ -119,3 +119,11 @@ Couvertures : composition centrée dans les 70 % centraux (Notion rogne des deux
 **Accueil** : bloc « Prêt ce soir » (galerie, aperçu = couverture, filtre interface Placard contient « PRÊT »), placé avant « Première fois ? ».
 **Repas** : « Cette semaine » en galerie (noms complets, plus de troncature), « Tableau » en second onglet (recréé).
 **Démarrer** : étape « Remettre à zéro les dates d'exemple » (sélection de toutes les tâches → Dernière fois = aujourd'hui).
+
+## Passe 4 (17 nov. 2026) — retours de Déborah
+
+Voir `docs/retours-deborah-2026-11-15.md`.
+- Produits : `Plus en stock` (case) et `Suivi en quantités` (case, option). `À racheter = if(Suivi en quantités, Stock actuel ≤ Seuil, Plus en stock)`. `Reste` affiche « il en reste / il n'en reste plus » en mode simple.
+- Ingrédients : rollups `Produit épuisé`, `Produit en quantités` ; `Disponible = if(quantités, stock ≥ quantité, non épuisé)`.
+- Vues Stock : Liste de courses et Placards (ex-Réserve, groupé par Zone) montrent la case. Vues à supprimer à la main : « Quotidien » (Stock), « Par domaine » (Tâches).
+- Tâches : domaines Enfants, Animaux ; 10 tâches ajoutées. Dates d'exemple décalées de +6 j (43 tâches) et repas de +7 j pour le 17 nov.

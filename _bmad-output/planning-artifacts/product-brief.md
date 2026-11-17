@@ -27,7 +27,7 @@ Une page d'accueil **« Aujourd'hui »** montre mes tâches, le repas du soir et
 
 ## Pour qui
 
-- **Cible au lancement :** couples actifs de 28 à 40 ans, avec ou sans jeune enfant. Ils cuisinent à l'avance et veulent arrêter que tout repose sur une seule personne.
+- **Cible au lancement :** couples actifs de 28 à 45 ans avec de jeunes enfants (précisé par Déborah le 15 nov. 2026 ; moment clé : l'arrivée d'un bébé). Ils cuisinent à l'avance et veulent arrêter que tout repose sur une seule personne.
 - **Profil acheteur :** souvent celle qui porte la charge. Elle débute ou se débrouille sur Notion.
 - **Profil utilisateur secondaire :** son ou sa partenaire, sur téléphone uniquement.
 
