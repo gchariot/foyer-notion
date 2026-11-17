@@ -57,7 +57,7 @@ def render(name,content,w,h):
 COVERS={
  "foyer":(("FOYER","noir",120),[("TÂCHES","rouge"),("STOCK","bleu"),("REPAS","vert"),("À RACHETER","jaune")]),
  "taches":(("TÂCHES DU FOYER","rouge",84),[("QUI FAIT QUOI","noir"),("EN RETARD","rouge"),("AUJOURD'HUI","jaune")]),
- "stock":(("STOCK & COURSES","bleu",84),[("RÉSERVE","noir"),("QUOTIDIEN","gris"),("À RACHETER","jaune")]),
+ "stock":(("STOCK & COURSES","bleu",84),[("PLACARDS","noir"),("STOCK 72 H","gris"),("À RACHETER","jaune")]),
  "repas":(("REPAS","vert",120),[("MENU DE LA SEMAINE","noir"),("CUISINÉ","vert"),("100 % DISPO","jaune")]),
  "semaine":(("POINT DU DIMANCHE","noir",84),[("10 MIN","jaune"),("À DEUX","rouge")]),
  "demarrer":(("DÉMARRER","noir",120),[("15 MIN","jaune"),("PREMIÈRE FOIS","bleu")]),
